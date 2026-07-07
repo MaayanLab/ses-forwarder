@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "logs_bucket" {
 module "s3_bucket" {
   #checkov:skip=CKV_AWS_19: False positive: https://github.com/bridgecrewio/checkov/issues/3847. The S3 bucket created by this module supports encryption with KMS.
   #checkov:skip=CKV_AWS_145: False positive: https://github.com/bridgecrewio/checkov/issues/3847. The S3 bucket created by this module support encryption with KMS.
-  source  = "schubergphilis/mcaf-s3/aws"
+  source  = "schubergphilis-ep/mcaf-s3/aws"
   version = "~> 2.0.0"
 
   region         = local.account_region

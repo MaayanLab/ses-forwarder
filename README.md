@@ -84,8 +84,8 @@ module "ses-forwarder" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda"></a> [lambda](#module\_lambda) | schubergphilis/mcaf-lambda/aws | ~> 3.0.0 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis/mcaf-s3/aws | ~> 2.0.0 |
+| <a name="module_lambda"></a> [lambda](#module\_lambda) | schubergphilis-ep/mcaf-lambda/aws | ~> 3.0.0 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis-ep/mcaf-s3/aws | ~> 2.0.0 |
 
 ## Resources
 

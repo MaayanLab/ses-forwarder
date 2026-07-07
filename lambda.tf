@@ -74,7 +74,7 @@ data "archive_file" "lambda" {
 
 module "lambda" {
   #checkov:skip=CKV_AWS_272: This module does not provide support for code-signing
-  source  = "schubergphilis/mcaf-lambda/aws"
+  source  = "schubergphilis-ep/mcaf-lambda/aws"
   version = "~> 3.0.0"
 
   region                 = local.account_region
