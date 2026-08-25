@@ -266,7 +266,19 @@ exports.processMessage = function (data) {
     });
 
   // Add a prefix to the Subject
-  if (data.config.subjectPrefix) {
+  var subjectPrefix = data.config.subjectPrefix || '';
+
+  subjectPrefix += '['
+  subjectPrefix += data.origEmail
+  if (/^x-ses-spam-verdict:[\t ]?fail/mi.test(header)) {
+    subjectPrefix += ',spam'
+  }
+  if (/^x-ses-virus-verdict:[\t ]?fail/mi.test(header)) {
+    subjectPrefix += ',virus'
+  }
+  subjectPrefix += ']: '
+
+  if (subjectPrefix) {
     header = header.replace(
       /^subject:[\t ]?(.*)/mgi,
       function (match, subject) {
