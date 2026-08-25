@@ -266,23 +266,23 @@ exports.processMessage = function (data) {
     });
 
   // Add a prefix to the Subject
-  var subjectPrefix = data.config.subjectPrefix || '';
+  var subjectPrefix = `${data.config.subjectPrefix || ''}`;
 
-  subjectPrefix += '['
-  subjectPrefix += data.origEmail
+  subjectPrefix += '[';
+  subjectPrefix += data.origEmail;
   if (/^x-ses-spam-verdict:[\t ]?fail/mi.test(header)) {
-    subjectPrefix += ',spam'
+    subjectPrefix += ',spam';
   }
   if (/^x-ses-virus-verdict:[\t ]?fail/mi.test(header)) {
-    subjectPrefix += ',virus'
+    subjectPrefix += ',virus';
   }
-  subjectPrefix += ']: '
+  subjectPrefix += ']: ';
 
   if (subjectPrefix) {
     header = header.replace(
       /^subject:[\t ]?(.*)/mgi,
       function (match, subject) {
-        return 'Subject: ' + data.config.subjectPrefix + subject;
+        return 'Subject: ' + subjectPrefix + subject;
       });
   }
 
