@@ -37,7 +37,6 @@ console.log("AWS Lambda SES Forwarder // based on: @arithmetric // Version 6.0.0
 //
 //   To match all email addresses matching no other mapping, use "@" as a key.
 var defaultConfig = {
-  fromEmail: process.env.FROM_EMAIL,
   subjectPrefix: process.env.SUBJECT_PREFIX,
   emailBucket: process.env.BUCKET_NAME,
   emailKeyPrefix: process.env.BUCKET_PREFIX,
@@ -308,7 +307,7 @@ exports.processMessage = function (data) {
  */
 exports.sendMessage = async function (data) {
   var params = {
-    FromEmailAddress: data.config.fromEmail,
+    FromEmailAddress: data.origEmail,
     Destination: { ToAddresses: data.recipients },
     Content: { Raw: { Data: Buffer.from(data.emailData) } },
   };

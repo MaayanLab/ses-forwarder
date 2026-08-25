@@ -99,7 +99,6 @@ module "lambda" {
     ALLOW_PLUS_SIGN   = var.allow_plus_sign
     BUCKET_NAME       = var.bucket_name
     BUCKET_PREFIX     = local.bucket_prefix
-    FROM_EMAIL        = var.from_email
     RECIPIENT_MAPPING = jsonencode(var.recipient_mapping)
     SUBJECT_PREFIX    = var.subject_prefix
   }

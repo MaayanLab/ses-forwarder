@@ -34,11 +34,6 @@ variable "bucket_prefix" {
   description = "S3 key name prefix where SES stores email"
 }
 
-variable "from_email" {
-  type        = string
-  description = "Forwarded emails will come from this verified address"
-}
-
 variable "kms_key_arn" {
   type        = string
   default     = null
