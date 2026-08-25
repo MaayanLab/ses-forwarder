@@ -83,7 +83,7 @@ module "lambda" {
   filename               = data.archive_file.lambda.output_path
   handler                = "index.handler"
   kms_key_arn            = var.kms_key_arn
-  memory_size            = 256
+  memory_size            = 512
   name                   = var.lambda_name
   runtime                = "nodejs24.x"
   source_code_hash       = data.archive_file.lambda.output_base64sha256
