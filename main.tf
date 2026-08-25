@@ -16,19 +16,23 @@ data "aws_caller_identity" "default" {}
 data "aws_region" "default" {}
 
 resource "aws_ses_receipt_rule_set" "default" {
+  count = var.create_ses_rule_set ? 1 : 0
+
   region        = local.account_region
   rule_set_name = var.ses_rule_set_name
 }
 
 resource "aws_ses_active_receipt_rule_set" "default" {
+  count = var.create_ses_rule_set ? 1 : 0
+
   region        = local.account_region
-  rule_set_name = aws_ses_receipt_rule_set.default.rule_set_name
+  rule_set_name = var.ses_rule_set_name
 }
 
 resource "aws_ses_receipt_rule" "default" {
   region        = local.account_region
   name          = var.ses_rule_name
-  rule_set_name = aws_ses_active_receipt_rule_set.default.rule_set_name
+  rule_set_name = var.ses_rule_set_name
   recipients    = keys(local.recipient_mapping)
   enabled       = true
   scan_enabled  = true

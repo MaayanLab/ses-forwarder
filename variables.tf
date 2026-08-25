@@ -63,9 +63,15 @@ variable "ses_rule_name" {
   description = "The name of the SES rule that invokes the Lambda function"
 }
 
+variable "create_ses_rule_set" {
+  type        = bool
+  description = "Whether to create the SES receipt rule set"
+  default     = false
+}
+
 variable "ses_rule_set_name" {
   type        = string
-  default     = "EmailForwarder"
+  default     = "default-rule-set"
   description = "The name of the active Rule Set in SES which you have already configured"
 }
 
