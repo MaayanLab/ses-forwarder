@@ -269,7 +269,7 @@ exports.processMessage = function (data) {
   var subjectPrefix = `${data.config.subjectPrefix || ''}`;
 
   subjectPrefix += '[';
-  subjectPrefix += data.origEmail;
+  subjectPrefix += data.originalRecipient;
   if (/^x-ses-spam-verdict:[\t ]?fail/mi.test(header)) {
     subjectPrefix += ',spam';
   }
